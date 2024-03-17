@@ -2,6 +2,8 @@ package com.lawrencejews.springbootrestfulwebservices.service.impl;
 
 import com.lawrencejews.springbootrestfulwebservices.dto.UserDto;
 import com.lawrencejews.springbootrestfulwebservices.entity.User;
+import com.lawrencejews.springbootrestfulwebservices.exception.EmailAlreadyExistsException;
+import com.lawrencejews.springbootrestfulwebservices.exception.ResourceNotFoundException;
 import com.lawrencejews.springbootrestfulwebservices.mapper.UserMapper;
 import com.lawrencejews.springbootrestfulwebservices.repository.UserRepository;
 import com.lawrencejews.springbootrestfulwebservices.service.UserService;
@@ -27,6 +29,11 @@ public class UserServiceImpl implements UserService {
 
         // User user = UserMapper.mapToUser(userDto);
         User user = modelMapper.map(userDto, User.class);
+        Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+
+        if(optionalUser.isPresent()){
+            throw new EmailAlreadyExistsException("Email Already Exists for User");
+        }
 
         User savedUser = userRepository.save(user);
 
@@ -68,6 +75,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long userId) {
+
+        User existingUser = userRepository.findById(userId).orElseThrow(
+        () -> new ResourceNotFoundException("User", "id", userId));
         userRepository.deleteById(userId);
     }
 

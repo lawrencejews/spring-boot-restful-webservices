@@ -8,9 +8,8 @@
 - This helps to reduce remote calls from client and server.
 - The required amount of the data is sent at a given request.
 - The communication follows between database to different layers: `controller layer`,`service layer`, `respository layer`and `database`.
-###### DTO - Libraries
+##### DTO - Libraries
 - Use mapper to convert from JPA to DTO - DTO to JPA.
 - Libraries the help with the mapping of objects: `ModelMapper` or `MapStruct`.
 - Add ModelMapper Maven Dependency and configure ModelMapper clas as Spring bean.
 - Inject and use ModelMapper Spring bean in service class.
-- 
