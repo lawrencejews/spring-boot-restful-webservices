@@ -13,3 +13,9 @@
 - Libraries the help with the mapping of objects: `ModelMapper` or `MapStruct`.
 - Add ModelMapper Maven Dependency and configure ModelMapper clas as Spring bean.
 - Inject and use ModelMapper Spring bean in service class.
+##### REST API Documentation: SpringDoc
+- SpringDoc-openapi generates API documentation for spring boot projects -> JSON/YAML with libraries.
+- Supported libraries include: OpeanAPI3, Spring-bootv3,Swagger UI, OAuth 2 and JSR-303.
+- Add dependencies to the project and model annotations.
+- Dependencies URL: ` https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui`
+- Access swagger-ui: `http://localhost:8080/swagger-ui/index.html`.
