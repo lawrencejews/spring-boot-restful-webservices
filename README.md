@@ -19,3 +19,13 @@
 - Add dependencies to the project and model annotations.
 - Dependencies URL: ` https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui`
 - Access swagger-ui: `http://localhost:8080/swagger-ui/index.html`.
+##### Dockering Spring Boot Application
+- Create a docker network for the containers `docker network create NAME ` aka `bridge`.
+- Run the images in the background using the created network then `docker exec -it DOCKER_CONTAINER_ID bash`
+- Project Folder than run `mvn clean install` to build a SNAPSHOT.jar file & run it
+- Build image `docker build -t springboot-restful-webservices:0.1.RELEASE .`
+- Map the docker network with the docker containers
+- Run docker services in a detached mode `docker-compose up -d --build`
+- Check the running instance of MySQL with `docker logs -f mysqldb`
+- Stop all docker containers running in the background `docker-compose down`.
+- Clean the docker environment `docker system prune -a`.
